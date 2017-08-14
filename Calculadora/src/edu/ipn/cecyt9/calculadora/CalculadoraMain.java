@@ -12,7 +12,6 @@ package edu.ipn.cecyt9.calculadora;
  * 
  *@author:  emmanuel 
  * @version:  1.0 
- * @date: 06-09-2015 
  */
 public class CalculadoraMain {
  public static void main(String[] args) {

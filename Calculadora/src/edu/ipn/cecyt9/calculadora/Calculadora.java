@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
  * 
  * @author:  emmanuel 
  * @version:  1.0 
- * @date: 06-09-2015 
+
  */
 public class Calculadora extends JFrame {
 
@@ -53,7 +53,7 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(400, 500);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -90,6 +90,12 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("-");
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
+                nuevoBotonOperacion("x²");
+                nuevoBotonOperacion("√");
+                nuevoBotonOperacion("Log10");
+                nuevoBotonOperacion("Sin");
+                nuevoBotonOperacion("Cos");
+                nuevoBotonOperacion("Tan");
 		nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
 
@@ -181,18 +187,34 @@ public class Calculadora extends JFrame {
 	}
 
 	/**
-	 * Calcula el resultado y lo muestra por pantalla
+	 * Calcula el resultado y lo muestra por pantalla}
+         * Recibe un dato de tipo String y lo compara para poder ejecutar la operación
 	 */
 	private void calcularResultado() {
 		if (operacion.equals("+")) {
-			resultado += new Double(pantalla.getText());
+			resultado += new Double(pantalla.getText());// Realiza la suma de dos datos de tipo double
 		} else if (operacion.equals("-")) {
-			resultado -= new Double(pantalla.getText());
+			resultado -= new Double(pantalla.getText());// Realiza la resta de dos datos de tipo double
 		} else if (operacion.equals("/")) {
-			resultado /= new Double(pantalla.getText());
+			resultado /= new Double(pantalla.getText());// Realiza una multiplicacion de dos datos tipo double
 		} else if (operacion.equals("*")) {
-			resultado *= new Double(pantalla.getText());
-		}
+			resultado *= new Double(pantalla.getText());// Realiza una división de dos datos tipo double
+		} else if (operacion.equals("x²")) {
+                        resultado = Math.pow(Double.parseDouble(pantalla.getText()), 2);//obtiene un dato String lo 
+                                                                                       //transforma a double y devuelve el número a la potencia 2
+                } else if (operacion.equals("√")) {
+                        resultado = Math.sqrt(Double.parseDouble(pantalla.getText()));//Devuelve el cuadrado de un numero
+                } else if (operacion.equals("Sin")) {
+                        resultado = Math.sin(Double.parseDouble(pantalla.getText()));//Devuelve el seno de un angulo dado en radianes
+                } else if (operacion.equals("Cos")) {
+                        resultado = Math.cos(Double.parseDouble(pantalla.getText()));//Devuelve el coseno de un angulo dado en radianes
+                } else if (operacion.equals("Tan")) {
+                        resultado = Math.tan(Double.parseDouble(pantalla.getText()));//Devuelve la tangente de un angulo dado en radianes
+                } else if (operacion.equals("Log10")) {
+                        resultado = Math.log10(Double.parseDouble(pantalla.getText()));//Devuelve el logaritmo base 10 de el númrero
+                }
+
+
 
 		pantalla.setText("" + resultado);
 		operacion = "";
